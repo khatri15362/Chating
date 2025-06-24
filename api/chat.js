@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       headers: {
         'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://your-vercel-url.vercel.app', // ← change to your actual URL
+        'HTTP-Referer': 'https://your-vercel-url.vercel.app',
         'X-Title': 'ChatGPT Clone'
       },
       body: JSON.stringify({
@@ -28,6 +28,7 @@ export default async function handler(req, res) {
 
     const reply = data.choices?.[0]?.message?.content || 'No response from AI';
     res.status(200).json({ reply });
+
   } catch (error) {
     res.status(500).json({ reply: 'Server Error. Please try again.' });
   }
